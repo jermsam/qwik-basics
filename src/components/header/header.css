@@ -1,0 +1,13 @@
+nav {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  padding: 1rem;
+}
+
+nav > div span{
+  margin: 0 5px;
+  color: cornflowerblue;
+  text-decoration: none;
+}

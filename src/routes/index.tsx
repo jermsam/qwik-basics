@@ -1,117 +1,79 @@
-import { component$ } from '@builder.io/qwik';
+import {component$, useSignal, useStore, $} from '@builder.io/qwik';
 import type { DocumentHead } from '@builder.io/qwik-city';
-
-import Counter from '~/components/starter/counter/counter';
-import Hero from '~/components/starter/hero/hero';
-import Infobox from '~/components/starter/infobox/infobox';
-import Starter from '~/components/starter/next-steps/next-steps';
+import {Link} from '@builder.io/qwik-city';
+import Reviews from '~/components/reviews';
+import Modal from '~/components/modal';
 
 export default component$(() => {
+  const open = useSignal(false);
+  // const close = $(() => open.value = false);
+  
+  
+  const reviews = useStore([
+    {
+      ratings: 5,
+      description: 'Awesome at what they do',
+      author: {
+        name: 'Jack Roy',
+      },
+    },
+    {
+      ratings: 3,
+      description: 'You want to try again',
+      author: {
+        name: 'James Rich',
+      },
+    },
+  ]);
   return (
-    <>
-      <Hero />
-
-      <div class="section bright">
-        <div class="container center">
-          <Starter />
-        </div>
+    <div class="bg-white space-y-4 p-4 sm:px-8 sm:py-6 lg:p-4 xl:px-8 xl:py-6">
+      <h3>
+        Home Page
+      </h3>
+      <p>Welcome home!</p>
+      <div style={'display: flex; gap:10%;'}>
+        <Link href={'/register'}>
+          <button  class='btn btn--primary'>Join now!</button>
+        </Link>
+        <button onClick$={() => open.value = true} class='btn btn--secondary'>Learn more</button>
       </div>
-
-      <div class="section">
-        <div class="container center">
-          <h3>
-            You can <b>count</b> on me
-          </h3>
-          <Counter />
-        </div>
-      </div>
-
-      <div class="section">
-        <div class="container topics">
-          <Infobox>
-            <div q:slot="title" class="icon icon-cli">
-              CLI Commands
-            </div>
-            <>
-              <p>
-                <code>npm run dev</code>
-                <br />
-                Starts the development server and watches for changes
-              </p>
-              <p>
-                <code>npm run preview</code>
-                <br />
-                Creates production build and starts a server to preview it
-              </p>
-              <p>
-                <code>npm run build</code>
-                <br />
-                Creates production build
-              </p>
-              <p>
-                <code>npm run qwik add</code>
-                <br />
-                Runs the qwik CLI to add integrations
-              </p>
-            </>
-          </Infobox>
-
-          <div>
-            <Infobox>
-              <div q:slot="title" class="icon icon-apps">
-                Example Apps
-              </div>
-              <p>
-                Have a look at the <a href="/demo/flower">Flower App</a> or the{' '}
-                <a href="/demo/todolist">Todo App</a>.
-              </p>
-            </Infobox>
-
-            <Infobox>
-              <div q:slot="title" class="icon icon-community">
-                Community
-              </div>
-              <ul>
-                <li>
-                  <span>Questions or just want to say hi? </span>
-                  <a href="https://qwik.builder.io/chat" target="_blank">
-                    Chat on discord!
-                  </a>
-                </li>
-                <li>
-                  <span>Follow </span>
-                  <a href="https://twitter.com/QwikDev" target="_blank">
-                    @QwikDev
-                  </a>
-                  <span> on Twitter</span>
-                </li>
-                <li>
-                  <span>Open issues and contribute on </span>
-                  <a href="https://github.com/BuilderIO/qwik" target="_blank">
-                    GitHub
-                  </a>
-                </li>
-                <li>
-                  <span>Watch </span>
-                  <a href="https://qwik.builder.io/media/" target="_blank">
-                    Presentations, Podcasts, Videos, etc.
-                  </a>
-                </li>
-              </ul>
-            </Infobox>
+      <Reviews reviews={reviews}/>
+      <Modal open={open.value} close$={() => open.value = false}>
+        <div q:slot={'main'}>
+          <h3> Regain Access</h3>
+          <div className="ipsum">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Adipisci aperiam at eos hic
+            minima! Adipisci alias dolorem dolores minima minus nam, nesciunt nulla veritatis voluptatibus. Enim, quis,
+            ullam? Exercitationem, obcaecati?
           </div>
         </div>
-      </div>
-    </>
+        <div q:slot={'footer'} open={open.value}>
+          <Reviews reviews={reviews}/>
+        </div>
+      </Modal>
+    </div>
   );
 });
 
 export const head: DocumentHead = {
-  title: 'Welcome to Qwik',
+  title: 'Home',
   meta: [
     {
       name: 'description',
       content: 'Qwik site description',
+    },
+  ],
+  links: [
+    {
+      href: 'https://fonts.googleapis.com/icon?family=Material+Icons',
+      rel: 'stylesheet',
+    },
+    {
+      rel: 'stylesheet',
+      href: 'https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@48,400,0,0',
+    },
+    {
+      rel: 'stylesheet',
+      href: 'https://fonts.googleapis.com/css?family=Tangerine',
     },
   ],
 };
