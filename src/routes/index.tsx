@@ -41,7 +41,7 @@ export default component$(() => {
       <Modal open={open.value} close$={() => open.value = false}>
         <div q:slot={'main'}>
           <h3> Regain Access</h3>
-          <div className="ipsum">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Adipisci aperiam at eos hic
+          <div class="ipsum">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Adipisci aperiam at eos hic
             minima! Adipisci alias dolorem dolores minima minus nam, nesciunt nulla veritatis voluptatibus. Enim, quis,
             ullam? Exercitationem, obcaecati?
           </div>

@@ -13,8 +13,8 @@ export default component$((props:ModalProps) => {
    <>
      {
        props.open && (
-         <div className='modal'>
-           <div className={'modal-content'}>
+         <div class='modal'>
+           <div class={'modal-content'}>
              <div style={'display: flex; justify-content: flex-end;'}>
                  <button onClick$={props.close$}>X</button>
              </div>

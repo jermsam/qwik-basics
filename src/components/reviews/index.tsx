@@ -7,7 +7,7 @@ export default component$((props = {reviews: []}) => {
     let ar = [];
     for (let i = 0; i < count; i++) {
       ar.push(
-        <span className="material-icons">
+        <span class="material-icons">
 star
 </span>
       );

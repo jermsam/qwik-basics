@@ -20,7 +20,7 @@ export default component$(() => {
     <div>
       <div>
         <Link href="/">
-          <button className={'btn'}>
+          <button class={'btn'}>
             <img
               src='https://img.freepik.com/premium-vector/card-cosmetics-beauty-products-circle-frame_257845-712.jpg?w=2000'
               style='width: 60px; height: 60px; border-radius: 50%;'
@@ -55,10 +55,10 @@ export default component$(() => {
         />
         <button onclick$={togglePasswordTypeIndicator} class='btn btn--secondary' type={'button'}>
           {passwordFieldType.value === 'password'? (
-              <span className="material-symbols-outlined">visibility</span>
+              <span class="material-symbols-outlined">visibility</span>
             )
             : (
-            <span className="material-symbols-outlined">visibility_off</span>
+            <span class="material-symbols-outlined">visibility_off</span>
           )}
         </button>
       </div>

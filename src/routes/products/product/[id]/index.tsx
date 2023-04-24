@@ -71,17 +71,17 @@ export default component$(() => {
               product &&
               <section>
                 <button onclick$={() => nav('/products')}>  Back</button>
-                <div className="card" style={'display: flex'}>
-                  <div className="img-box" style={'width: 100%;'}>
+                <div class="card" style={'display: flex'}>
+                  <div class="img-box" style={'width: 100%;'}>
                     <img src={product?.img} style={'max-width: 600px;'} loading="lazy"/>
                   </div>
                   <div style="display: flex; flex-direction:column; align-content:center; justify-items:center">
                     <h1
-                      className="mt-6 text-lg font-semibold text-white sm:text-slate-900 md:text-2xl dark:sm:text-white text-center">
+                      class="mt-6 text-lg font-semibold text-white sm:text-slate-900 md:text-2xl dark:sm:text-white text-center">
                       {product?.title}
                     </h1>
                     <p
-                      className="mt-4 text-sm leading-6 col-start-1 sm:col-span-2 lg:mt-6 lg:row-start-4 lg:col-span-1 dark:text-slate-400 truncate-overflow">
+                      class="mt-4 text-sm leading-6 col-start-1 sm:col-span-2 lg:mt-6 lg:row-start-4 lg:col-span-1 dark:text-slate-400 truncate-overflow">
                       {product?.description}
                     </p>
                   </div>
